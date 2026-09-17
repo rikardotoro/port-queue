@@ -57,38 +57,37 @@ Call the arrival rate λ ships per day and the capacity μ ships per day. Utilis
 
 > T × λ ÷ (μ − λ) = T × ρ ÷ (1 − ρ)
 
-That last fraction is the whole story. At 60% utilisation a closed day costs a day and a half of queue. At 80% it costs four. At 90% it costs nine. Shanghai before Hinnamnor was running at 86%: 34.5 container ships a day against a demonstrated capacity of 40, so every closed day was worth six days of queue.
+At 60% utilisation a closed day costs a day and a half of queue. At 80% it costs four. At 90% it costs nine. Shanghai before Hinnamnor was running at 86%: 34.5 container ships a day against a demonstrated capacity of 40, so every closed day was worth six days of queue.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/charts/multiplier-dark.svg">
   <img alt="Days to clear per closed day against utilisation: the closed-form curve and simulated points" src="docs/charts/multiplier-light.svg" width="760">
 </picture>
 
-The dots are the simulation, the line is the formula. They agree, which is the first thing a simulation has to prove before it is allowed to say anything the formula can't.
+The dots are the simulation and the line is the formula. They agree, and a simulation has to pass that check before it can say anything the formula can't.
 
 ## Where the spreadsheet stops
 
 The formula assumes ships arrive like clockwork. They don't, and at high utilisation randomness alone produces a queue before any storm. The simulation is a [SimPy](https://simpy.readthedocs.io/) model: ships arrive as a Poisson process at the measured rate, a set of berths serves them at the measured capacity, and a gate stops berthing on the closure days. It records the queue at anchor day by day, the wait of every ship, and how many ships berth each day, which is the thing PortWatch actually observes.
 
-Two things fall out of it that the formula cannot give you:
+The formula gives one number; the simulation gives a spread. With every ship kept coming, the queue clears in 11 days on average and in 14 on a bad run. The shaded band in the hero chart is the 90th percentile of 200 runs.
 
-- **A distribution, not a number.** The queue clears in 11 days on average with every ship kept coming, and in 14 on a bad run. The shaded band in the hero chart is the 90th percentile of 200 runs.
-- **Storms that interact.** A second closure a few days after the first lands on a port that is still draining. Whether that is worse than two separate storms depends on the gap, and the answer is not what you would guess:
+It also handles storms that interact. A second closure a few days after the first lands on a port that is still draining, and whether that is worse than two separate storms depends on the gap:
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/charts/double-dark.svg">
   <img alt="Ship-days waiting for two closures against the gap between them" src="docs/charts/double-light.svg" width="760">
 </picture>
 
-Back-to-back, the second storm nearly doubles the pain. From three days apart it is *cheaper* than two separate storms, because ships stop arriving the day before a typhoon, and that lull drains the queue the first storm left. The calendar barely notices either way: the queue after the second storm clears in seven and a half days instead of six. The ships notice.
+Back to back, the second storm nearly doubles the ship-days lost. From three days apart it costs less than two separate storms, because ships stop arriving the day before a typhoon and that lull drains the queue the first storm left. The queue after the second storm clears in seven and a half days instead of six, so the calendar hardly moves; the waiting time per ship is what changes.
 
 ## Checked against the port
 
-A model that only agrees with itself is a toy. PortWatch records a closure as zero container calls and the recovery as calls above baseline in the days after. So the tool overlays its simulated berthings on the real calls, ratio to the trailing median, and reports the fit.
+PortWatch records a closure as zero container calls and the recovery as calls above baseline in the days after. So the tool overlays its simulated berthings on the real calls, ratio to the trailing median, and reports the fit.
 
 The first version of the model was wrong. The textbook queue assumes every ship keeps coming during the closure and waits. The real surge after Hinnamnor was smaller than that: about 88 ship-calls went missing around the closure and about 50 came back within two weeks. The rest slowed down, diverted to Ningbo or Yangshan, or simply arrived later than the window can see. The tool measures that recovered fraction from the port's own history, feeds it back as the share of ships that keep arriving, and the calibrated model fits the surge better than the textbook one. Its queue after Hinnamnor clears in about six days, not eleven.
 
-That correction is the point of the exercise. The simulation didn't just produce a number; it produced a number the port could contradict, and the port did.
+The simulation produced a number the port could contradict, and the port did. That is what the check is for.
 
 ## Every closure since 2019
 
@@ -105,11 +104,11 @@ A second, independent detector reads the NOAA best tracks and marks every storm 
 
 The closed form is a spreadsheet:
 
-- **Excel.** `rho = MEDIAN(calls) / PERCENTILE.INC(calls, 0.98)` over the year before the storm, then `= closure_days * rho / (1 - rho)`. Multiply by the recovered fraction if you have measured one.
-- **SQL.** `PERCENTILE_CONT(0.5)` and `PERCENTILE_CONT(0.98) WITHIN GROUP (ORDER BY calls)` over the same window; the arithmetic is the same.
-- **DAX.** `MEDIANX` and `PERCENTILEX.INC` on the daily calls table.
+- Excel: `rho = MEDIAN(calls) / PERCENTILE.INC(calls, 0.98)` over the year before the storm, then `= closure_days * rho / (1 - rho)`. Multiply by the recovered fraction if you have measured one.
+- SQL: `PERCENTILE_CONT(0.5)` and `PERCENTILE_CONT(0.98) WITHIN GROUP (ORDER BY calls)` over the same window; the arithmetic is the same.
+- DAX: `MEDIANX` and `PERCENTILEX.INC` on the daily calls table.
 
-This is where the spreadsheet stops. Random arrivals, the shape of the surge, the distribution of clearing times and the second storm need the simulation, and that is what the repo is for. The whole model is about eighty lines of SimPy in [`sim.py`](src/port_queue/sim.py).
+The spreadsheet stops there. Random arrivals, the shape of the surge, the spread of clearing times and the second storm need the simulation. The whole model is about eighty lines of SimPy in [`sim.py`](src/port_queue/sim.py).
 
 ## Five ways to get this wrong
 
