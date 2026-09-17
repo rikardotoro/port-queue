@@ -12,6 +12,7 @@ from port_queue.sim import Summary, drain_closed_form, run_many
 from port_queue.validate import POST_DAYS, PRE_DAYS, Check, compare
 
 EXAMPLES = Path(__file__).parent / "examples"
+CAPACITY_UPLIFT = 0.10
 
 
 @dataclass(frozen=True)
@@ -37,6 +38,8 @@ class Result:
     check: Check
     double: DoubleStorm | None
     runs: int
+    more_capacity: Summary | None = None
+    capacity_uplift: float = 0.10
     notes: list[str] = field(default_factory=list)
 
 
@@ -97,8 +100,13 @@ def analyse(series: pd.Series, port: str, event: pd.Timestamp | None = None,
     if second_storm_after is not None:
         double = what_if_second_storm(rates, closure, second_storm_after,
                                       check.recovered, runs, seed)
+    more = run_many(rates.lam, rates.mu * (1 + CAPACITY_UPLIFT),
+                    [(PRE_DAYS, PRE_DAYS + closure.days - 1)],
+                    PRE_DAYS + closure.days + POST_DAYS, runs=runs, seed=seed,
+                    arrival_factor=check.recovered)
     return Result(port, closure, storm_name(closure, storms, port), rates,
-                  drain_closed_form(closure.days, rates.rho), check, double, runs)
+                  drain_closed_form(closure.days, rates.rho), check, double, runs,
+                  more, CAPACITY_UPLIFT)
 
 
 def to_dict(result: Result) -> dict:
@@ -130,6 +138,15 @@ def to_dict(result: Result) -> dict:
             for o, q in zip(k.frame["offset"], k.calibrated.queue_mean[PRE_DAYS - 3:PRE_DAYS - 3 + len(k.frame)])
         ],
     }
+    if result.more_capacity:
+        m = result.more_capacity
+        out["scenarios"] = {"more_capacity": {
+            "uplift": result.capacity_uplift,
+            "drain_days_mean": round(m.drain_days_mean, 1),
+            "extra_ship_days": round(m.extra_ship_days_mean, 1),
+            "queue_by_day": [[int(o), round(float(q), 1)] for o, q in
+                             zip(k.frame["offset"], m.queue_mean[PRE_DAYS - 3:PRE_DAYS - 3 + len(k.frame)])],
+        }}
     if result.double:
         d = result.double
         out["double_storm"] = {
@@ -190,5 +207,11 @@ def render(result: Result, console: Console | None = None) -> None:
         console.print(f"  Ships: {d.double_ship_days:.0f} ship-days waiting vs {d.single_ship_days:.0f} "
                       f"for one storm — ×{ratio:.1f}, {'more' if ratio > 2 else 'less'} than two "
                       f"separate storms; longest wait {d.double_max_wait:.1f} vs {d.single_max_wait:.1f} days.")
+    if result.more_capacity:
+        m = result.more_capacity
+        console.print()
+        console.print(f"[bold]What if the port had {result.capacity_uplift:.0%} more capacity[/bold]")
+        console.print(f"  Same storm: {m.drain_days_mean:.1f} days to clear, "
+                      f"{m.extra_ship_days_mean:.0f} ship-days waiting vs {k.calibrated.extra_ship_days_mean:.0f}.")
     console.print()
     console.print("[italic]The storm is the closure. The cost is the queue.[/italic]")

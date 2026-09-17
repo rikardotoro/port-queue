@@ -47,6 +47,9 @@ What if the same storm came back 4 days later
   Queue after the second storm: 7.5 days to clear (one storm: 6.1).
   Ships: 276 ship-days waiting vs 162 for one storm — ×1.7, less than two separate storms; longest wait 2.2 vs 1.9 days.
 
+What if the port had 10% more capacity
+  Same storm: 3.6 days to clear, 70 ship-days waiting vs 125.
+
 The storm is the closure. The cost is the queue.
 ```
 <!-- END OUTPUT -->
