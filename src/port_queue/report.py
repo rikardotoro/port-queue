@@ -120,6 +120,10 @@ def to_dict(result: Result) -> dict:
                        "max_wait_days": round(k.calibrated.max_wait_mean, 2),
                        "extra_ship_days": round(k.calibrated.extra_ship_days_mean, 1)},
         "runs": result.runs,
+        "queue_by_day": [
+            [int(o), round(float(q), 1)]
+            for o, q in zip(k.frame["offset"], k.calibrated.queue_mean[PRE_DAYS - 3:PRE_DAYS - 3 + len(k.frame)])
+        ],
     }
     if result.double:
         d = result.double
