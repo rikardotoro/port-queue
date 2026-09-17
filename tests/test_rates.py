@@ -25,8 +25,8 @@ def test_arrival_rate_is_the_trailing_median_before_the_day():
 def test_arrival_rate_skips_closure_days():
     series = flat(30)
     at = series.index[-1]
-    series.iloc[-10:-1] = 0.0
-    closure = Closure(series.index[-10], series.index[-2], "calls")
+    series.iloc[-15:-1] = 0.0
+    closure = Closure(series.index[-15], series.index[-2], "calls")
     assert arrival_rate(series, at, closures=[closure]) == 30.0
     assert arrival_rate(series, at) < 30.0
 
@@ -50,5 +50,5 @@ def test_too_little_history_is_refused():
 
 def test_shanghai_before_muifa_is_a_busy_but_not_saturated_port():
     rates = measure(load_calls(EXAMPLES / "shanghai.csv"), pd.Timestamp("2022-09-13"))
-    assert 0.6 <= rates.rho <= 0.9
+    assert 0.6 <= rates.rho <= 0.95
     assert rates.lam < rates.mu

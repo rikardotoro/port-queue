@@ -37,7 +37,7 @@ def arrival_rate(series: pd.Series, at: pd.Timestamp, window: int = RATE_WINDOW,
     return float(_history(series, at, window, closures).median())
 
 
-def capacity(series: pd.Series, at: pd.Timestamp, quantile: float = 0.95,
+def capacity(series: pd.Series, at: pd.Timestamp, quantile: float = 0.98,
              window: int = CAPACITY_WINDOW,
              closures: list[Closure] | None = None) -> float:
     return float(np.quantile(_history(series, at, window, closures).values, quantile))
@@ -52,7 +52,7 @@ def utilisation(lam: float, mu: float) -> float:
     return lam / mu
 
 
-def measure(series: pd.Series, at: pd.Timestamp, quantile: float = 0.95,
+def measure(series: pd.Series, at: pd.Timestamp, quantile: float = 0.98,
             closures: list[Closure] | None = None) -> Rates:
     lam = arrival_rate(series, at, closures=closures)
     mu = capacity(series, at, quantile=quantile, closures=closures)
