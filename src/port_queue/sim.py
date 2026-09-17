@@ -45,13 +45,25 @@ def _closed_set(closures: list[tuple[int, int]]) -> set[int]:
     return days
 
 
+LEAD_DAYS = 1
+
+
+def _damped_set(closures: list[tuple[int, int]], lead_days: int) -> set[int]:
+    days: set[int] = set()
+    for start, end in closures:
+        days.update(range(start - lead_days, end + 1))
+    return days
+
+
 def simulate(lam: float, mu: float, closures: list[tuple[int, int]], days: int,
              seed: int = 0, deterministic: bool = False,
-             berths: int | None = None) -> SimResult:
+             berths: int | None = None, arrival_factor: float = 1.0,
+             lead_days: int = LEAD_DAYS) -> SimResult:
     rng = np.random.default_rng(seed)
     capacity = berths or max(1, int(round(mu)))
     service = capacity / mu
     closed = _closed_set(closures)
+    damped = _damped_set(closures, lead_days)
     env = simpy.Environment()
     berth = simpy.Resource(env, capacity=capacity)
     state = {"open": True, "reopened": env.event(), "waiting": 0}
@@ -81,7 +93,8 @@ def simulate(lam: float, mu: float, closures: list[tuple[int, int]], days: int,
 
     def source():
         while True:
-            gap = 1.0 / lam if deterministic else rng.exponential(1.0 / lam)
+            rate = lam * (arrival_factor if int(env.now) in damped else 1.0)
+            gap = 1.0 / rate if deterministic else rng.exponential(1.0 / rate)
             yield env.timeout(gap)
             day = int(env.now)
             if day < days:
@@ -137,8 +150,9 @@ def simulate(lam: float, mu: float, closures: list[tuple[int, int]], days: int,
 
 
 def run_many(lam: float, mu: float, closures: list[tuple[int, int]], days: int,
-             runs: int = 200, seed: int = 0) -> Summary:
-    results = [simulate(lam, mu, closures, days, seed=seed + i) for i in range(runs)]
+             runs: int = 200, seed: int = 0, arrival_factor: float = 1.0) -> Summary:
+    results = [simulate(lam, mu, closures, days, seed=seed + i,
+                        arrival_factor=arrival_factor) for i in range(runs)]
     queues = np.stack([r.queue for r in results])
     berthings = np.stack([r.berthings for r in results])
     drains = np.array([r.drain_days for r in results], dtype=float)

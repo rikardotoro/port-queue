@@ -59,3 +59,21 @@ def test_run_many_summarises_the_runs():
     assert summary.queue_p90[52] >= summary.queue_mean[52]
     assert summary.drain_days_mean > 2
     assert summary.runs == 20
+
+
+def test_arrival_factor_scales_the_backlog_and_the_drain():
+    full = simulate(LAM, MU, [(50, 51)], days=120, deterministic=True)
+    half = simulate(LAM, MU, [(50, 51)], days=120, deterministic=True, arrival_factor=0.5)
+    assert abs(half.drain_days - 0.5 * full.drain_days) <= 1
+    assert half.arrivals[49] < full.arrivals[49]          # the day before the storm
+    assert half.arrivals[48] == full.arrivals[48]
+
+
+def test_simulated_surge_conserves_the_ships_that_arrived():
+    result = simulate(LAM, MU, [(50, 51)], days=120, deterministic=True)
+    arrived_while_shut = result.arrivals[50:52].sum()
+    baseline = LAM
+    excess = (result.berthings[52:] - baseline).clip(min=0).sum()
+    deficit = (baseline - result.berthings[49:52]).clip(min=0).sum()
+    assert abs(excess - deficit) <= 0.05 * deficit
+    assert abs(deficit - arrived_while_shut) <= 0.05 * arrived_while_shut
