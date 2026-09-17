@@ -111,7 +111,7 @@ The closed form is a spreadsheet:
 - SQL: `PERCENTILE_CONT(0.5)` and `PERCENTILE_CONT(0.98) WITHIN GROUP (ORDER BY calls)` over the same window; the arithmetic is the same.
 - DAX: `MEDIANX` and `PERCENTILEX.INC` on the daily calls table.
 
-The spreadsheet stops there. Random arrivals, the shape of the surge, the spread of clearing times and the second storm need the simulation. The whole model is about 150 lines of SimPy in [`sim.py`](src/port_queue/sim.py).
+The spreadsheet stops there. Random arrivals, the shape of the surge, the spread of clearing times and the second storm need the simulation. The whole model is about 140 lines of SimPy in [`sim.py`](src/port_queue/sim.py).
 
 ## Five ways to get this wrong
 
