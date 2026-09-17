@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="450" viewBox="0 0 760 450" role="img">
+<text x="56.0" y="24.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="15" fill="#ffffff" text-anchor="start" font-weight="bold">Two days closed, a week of catching up — Hinnamnor, Shanghai, Sep 2022</text>
+<text x="56.0" y="44.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" fill="#898781" text-anchor="start" font-weight="normal">Daily container calls as a ratio to the trailing-28-day median. Real PortWatch calls in grey; the two models are lines.</text>
+<line x1="56.0" y1="164.0" x2="736.0" y2="164.0" stroke="#2c2c2a" stroke-width="1.0"/>
+<text x="48.0" y="168.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="end" font-weight="normal">0.5×</text>
+<line x1="56.0" y1="114.0" x2="736.0" y2="114.0" stroke="#2c2c2a" stroke-width="1.0"/>
+<text x="48.0" y="118.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="end" font-weight="normal">1.0×</text>
+<line x1="56.0" y1="64.0" x2="736.0" y2="64.0" stroke="#2c2c2a" stroke-width="1.0"/>
+<text x="48.0" y="68.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="end" font-weight="normal">1.5×</text>
+<rect x="186.6" y="58.0" width="101.5" height="156.0" fill="#3987e5" opacity="0.1"/>
+<text x="190.6" y="72.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#3987e5" text-anchor="start" font-weight="bold">port closed</text>
+<rect x="64.6" y="127.0" width="28.1" height="87.0" fill="#4a4945" opacity="1.0"/>
+<rect x="109.9" y="132.8" width="28.1" height="81.2" fill="#4a4945" opacity="1.0"/>
+<rect x="155.3" y="170.5" width="28.1" height="43.5" fill="#4a4945" opacity="1.0"/>
+<rect x="200.6" y="214.0" width="28.1" height="0.0" fill="#4a4945" opacity="1.0"/>
+<rect x="245.9" y="214.0" width="28.1" height="0.0" fill="#4a4945" opacity="1.0"/>
+<rect x="291.3" y="103.9" width="28.1" height="110.1" fill="#4a4945" opacity="1.0"/>
+<rect x="336.6" y="92.3" width="28.1" height="121.7" fill="#4a4945" opacity="1.0"/>
+<rect x="381.9" y="95.2" width="28.1" height="118.8" fill="#4a4945" opacity="1.0"/>
+<rect x="427.3" y="92.3" width="28.1" height="121.7" fill="#4a4945" opacity="1.0"/>
+<rect x="472.6" y="115.4" width="28.1" height="98.6" fill="#4a4945" opacity="1.0"/>
+<rect x="517.9" y="103.9" width="28.1" height="110.1" fill="#4a4945" opacity="1.0"/>
+<rect x="563.3" y="98.1" width="28.1" height="115.9" fill="#4a4945" opacity="1.0"/>
+<rect x="608.6" y="170.5" width="28.1" height="43.5" fill="#4a4945" opacity="1.0"/>
+<rect x="653.9" y="214.0" width="28.1" height="0.0" fill="#4a4945" opacity="1.0"/>
+<rect x="699.3" y="103.9" width="28.1" height="110.1" fill="#4a4945" opacity="1.0"/>
+<path d="M 78.7 114.8 L 124.0 115.6 L 169.3 113.8 L 214.7 214.0 L 260.0 214.0 L 305.3 98.1 L 350.7 98.1 L 396.0 98.1 L 441.3 98.1 L 486.7 98.1 L 532.0 98.1 L 577.3 98.4 L 622.7 99.5 L 668.0 100.6 L 713.3 102.7" fill="none" stroke="#3987e5" stroke-width="2.2" stroke-linejoin="round" stroke-dasharray="5 4"/>
+<path d="M 78.7 114.8 L 124.0 115.6 L 169.3 154.0 L 214.7 214.0 L 260.0 214.0 L 305.3 98.1 L 350.7 98.1 L 396.0 98.5 L 441.3 100.1 L 486.7 102.5 L 532.0 104.0 L 577.3 106.2 L 622.7 110.1 L 668.0 108.9 L 713.3 110.8" fill="none" stroke="#d95926" stroke-width="2.6" stroke-linejoin="round"/>
+<text x="78.7" y="228.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">-3</text>
+<text x="124.0" y="228.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">-2</text>
+<text x="169.3" y="228.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">-1</text>
+<text x="214.7" y="228.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+0</text>
+<text x="260.0" y="228.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+1</text>
+<text x="305.3" y="228.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+2</text>
+<text x="350.7" y="228.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+3</text>
+<text x="396.0" y="228.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+4</text>
+<text x="441.3" y="228.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+5</text>
+<text x="486.7" y="228.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+6</text>
+<text x="532.0" y="228.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+7</text>
+<text x="577.3" y="228.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+8</text>
+<text x="622.7" y="228.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+9</text>
+<text x="668.0" y="228.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+10</text>
+<text x="713.3" y="228.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+11</text>
+<text x="736.0" y="228.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="start" font-weight="normal">days</text>
+<text x="638.7" y="160.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#3987e5" text-anchor="start" font-weight="bold">Muifa arrives</text>
+<rect x="56.0" y="241.0" width="12.0" height="10.0" fill="#4a4945" opacity="1.0"/>
+<text x="74.0" y="250.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" fill="#c3c2b7" text-anchor="start" font-weight="normal">real calls</text>
+<line x1="146.0" y1="246.0" x2="172.0" y2="246.0" stroke="#3987e5" stroke-width="2.2" stroke-dasharray="5 4"/>
+<text x="178.0" y="250.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" fill="#c3c2b7" text-anchor="start" font-weight="normal">textbook: every ship keeps coming</text>
+<line x1="396.0" y1="246.0" x2="422.0" y2="246.0" stroke="#d95926" stroke-width="2.6"/>
+<text x="428.0" y="250.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" fill="#c3c2b7" text-anchor="start" font-weight="normal">calibrated: 57% keep coming, measured from the surge</text>
+<text x="56.0" y="286.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" fill="#898781" text-anchor="start" font-weight="normal">Ships waiting at anchor — calibrated model, mean and 90th percentile of 200 runs</text>
+<line x1="56.0" y1="400.0" x2="736.0" y2="400.0" stroke="#2c2c2a" stroke-width="1.0"/>
+<text x="48.0" y="404.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="end" font-weight="normal">0</text>
+<line x1="56.0" y1="350.0" x2="736.0" y2="350.0" stroke="#2c2c2a" stroke-width="1.0"/>
+<text x="48.0" y="354.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="end" font-weight="normal">24</text>
+<line x1="56.0" y1="300.0" x2="736.0" y2="300.0" stroke="#2c2c2a" stroke-width="1.0"/>
+<text x="48.0" y="304.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="end" font-weight="normal">49</text>
+<path d="M 78.7 389.8 L 124.0 391.8 L 169.3 400.0 L 214.7 346.9 L 260.0 300.0 L 305.3 312.2 L 350.7 320.4 L 396.0 328.6 L 441.3 334.7 L 486.7 342.9 L 532.0 348.8 L 577.3 356.9 L 622.7 367.3 L 668.0 371.4 L 713.3 385.3 L 713.3 400.0 L 668.0 400.0 L 622.7 400.0 L 577.3 400.0 L 532.0 400.0 L 486.7 400.0 L 441.3 400.0 L 396.0 400.0 L 350.7 400.0 L 305.3 400.0 L 260.0 400.0 L 214.7 400.0 L 169.3 400.0 L 124.0 400.0 L 78.7 400.0 Z" fill="#3d2a22"/>
+<path d="M 78.7 397.8 L 124.0 398.2 L 169.3 400.0 L 214.7 359.5 L 260.0 319.4 L 305.3 333.7 L 350.7 346.1 L 396.0 356.3 L 441.3 365.9 L 486.7 375.2 L 532.0 381.9 L 577.3 386.5 L 622.7 390.3 L 668.0 392.5 L 713.3 395.7" fill="none" stroke="#d95926" stroke-width="2.6" stroke-linejoin="round"/>
+<text x="713.3" y="345.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="11" fill="#d95926" text-anchor="end" font-weight="bold">clears 6 days after reopening (closed form: 7)</text>
+<text x="78.7" y="414.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">-3</text>
+<text x="124.0" y="414.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">-2</text>
+<text x="169.3" y="414.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">-1</text>
+<text x="214.7" y="414.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+0</text>
+<text x="260.0" y="414.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+1</text>
+<text x="305.3" y="414.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+2</text>
+<text x="350.7" y="414.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+3</text>
+<text x="396.0" y="414.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+4</text>
+<text x="441.3" y="414.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+5</text>
+<text x="486.7" y="414.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+6</text>
+<text x="532.0" y="414.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+7</text>
+<text x="577.3" y="414.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+8</text>
+<text x="622.7" y="414.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+9</text>
+<text x="668.0" y="414.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+10</text>
+<text x="713.3" y="414.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="middle" font-weight="normal">+11</text>
+<text x="56.0" y="440.0" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="10" fill="#898781" text-anchor="start" font-weight="normal">Source: IMF PortWatch daily port calls (AIS-derived); NOAA IBTrACS for the storm; simulation in SimPy.</text>
+</svg>
