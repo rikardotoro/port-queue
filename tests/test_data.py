@@ -35,11 +35,11 @@ def test_missing_days_become_nan_not_zero(tmp_path):
 
 def test_missing_calls_column_names_the_options(tmp_path):
     with pytest.raises(MissingColumnError, match="calls"):
-        load_calls(write(tmp_path, "date,ships\n2024-01-01,10\n"))
+        load_calls(write(tmp_path, "date,boats\n2024-01-01,10\n"))
 
 
 def test_bad_value_names_the_row(tmp_path):
-    with pytest.raises(InvalidDataError, match="row 2"):
+    with pytest.raises(InvalidDataError, match="row 3"):
         load_calls(write(tmp_path, "date,calls\n2024-01-01,10\n2024-01-02,many\n"))
 
 
