@@ -23,6 +23,8 @@ class DoubleStorm:
     double_ship_days: float
     single_max_wait: float
     double_max_wait: float
+    single_queue: list[float] = field(default_factory=list)
+    double_queue: list[float] = field(default_factory=list)
 
 
 @dataclass(frozen=True)
@@ -76,9 +78,12 @@ def what_if_second_storm(rates: Rates, closure: Closure, gap_days: int,
                       arrival_factor=arrival_factor)
     double = run_many(rates.lam, rates.mu, [first, second], days, runs=runs, seed=seed,
                       arrival_factor=arrival_factor)
+    window = slice(PRE_DAYS - 3, second[1] + 1 + POST_DAYS)
     return DoubleStorm(gap_days, single.drain_days_mean, double.drain_days_mean,
                        single.extra_ship_days_mean, double.extra_ship_days_mean,
-                       single.max_wait_mean, double.max_wait_mean)
+                       single.max_wait_mean, double.max_wait_mean,
+                       [float(v) for v in single.queue_mean[window]],
+                       [float(v) for v in double.queue_mean[window]])
 
 
 def analyse(series: pd.Series, port: str, event: pd.Timestamp | None = None,
@@ -136,6 +141,8 @@ def to_dict(result: Result) -> dict:
             "single_max_wait": round(d.single_max_wait, 2),
             "double_max_wait": round(d.double_max_wait, 2),
             "ship_days_ratio": round(d.double_ship_days / max(d.single_ship_days, 1e-9), 2),
+            "queue_by_day": [[i - 3, round(a, 1), round(b, 1)]
+                             for i, (a, b) in enumerate(zip(d.single_queue, d.double_queue))],
         }
     return out
 
